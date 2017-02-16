@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Counting with a local variable.</p>
+
+<button type="button" onclick="myFunction('add')">Add!</button>
+<button type="button" onclick="myFunction('subtract')">Subtract!</button>
+
+<!--Initial value-->
+<p id="demo">0</p>
+
+<script>
+  // Technically the math class, it's a closure
+  var math = (function () {
+    var counter = 0;
+    return {
+      add: function () {
+        return counter += 1;
+      },
+      subtract: function () {
+        return counter -= 1;
+      }
+    }
+  })();
+
+  // Call closure function
+  function myFunction(f) {
+    switch (f) {
+      case 'add':
+        document.getElementById("demo").innerHTML = math.add();
+        break;
+      case 'subtract':
+        document.getElementById("demo").innerHTML = math.subtract();
+        break;
+    }
+  }
+
+</script>
+
+</body>
+</html>
+
